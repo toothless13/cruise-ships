@@ -10,3 +10,15 @@ describe('Ship', () => {
         expect(ship.startingPort).toBe('Dover');
     });
 });
+
+describe('setSail', () => {
+    // it('exists on Ship class', () => {
+    //     const ship = new Ship('Dover');
+    //     expect(ship.setSail).not.toBeFalsy();
+    // });
+    it('', () => {
+        const ship = new Ship('Dover');
+        ship.setSail = 'Belfast';
+        expect(ship.startingPort).toBe('Belfast');
+    });
+});
