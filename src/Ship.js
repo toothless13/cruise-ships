@@ -3,8 +3,12 @@ class Ship {
         this.startingPort = startingPort;
     }
 
-    set setSail(newPort) {
-        this.startingPort = newPort;
+    setSail() {
+        this.startingPort = '';
+    }
+
+    dock(dock) {
+        this.dockedAt = dock;
     }
 }
 
