@@ -8,21 +8,21 @@ describe('Ship', () => {
     });
     it('has a starting port', () => {
         const ship = new Ship(Port);
-        expect(ship.startingPort).toBeInstanceOf(Object);
+        expect(ship.currentPort).toBeInstanceOf(Object);
         const port = new Port('Dover');
         const ship2 = new Ship(port);
-        expect(ship2.startingPort).toEqual(port);
+        expect(ship2.currentPort).toBe(port);
     });
     it('can set sail', () => {
         const ship = new Ship('Dover');
         ship.setSail();
-        expect(ship.startingPort).toBeFalsy;
+        expect(ship.currentPort).toBeFalsy;
     });
     it('can dock', () => {
         const port = new Port('Dover');
         const port2 = new Port('Belfast');
         const ship = new Ship(port);
         ship.dock(port2);
-        expect(ship.dockedAt).toBe(port2);
+        expect(ship.currentPort).toBe(port2);
     });
 });
