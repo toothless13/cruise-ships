@@ -21,7 +21,7 @@ describe('Ship', () => {
 
     it('has a previousPort property set to null', () => {
         const port = new Port('Dover');
-        const itinerary = new Itinerary(port);
+        const itinerary = new Itinerary([port]);
         const ship = new Ship(itinerary);
         expect(ship).toHaveProperty('previousPort');
         expect(ship.previousPort).toBeNull();
@@ -58,5 +58,14 @@ describe('Ship', () => {
         ship.setSail();
         ship.dock();
         expect(ship.currentPort).toBe(belfast);
+    });
+
+    it('gets added to port on instantiation', () => {
+        const dover = new Port('Dover');
+        // const belfast = new Port('Belfast');
+        const itinerary = new Itinerary([dover]);
+        const ship = new Ship(itinerary);
+
+        expect(dover.ships).toContain(ship);
     });
 });
