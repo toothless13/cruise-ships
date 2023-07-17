@@ -45,10 +45,7 @@ describe('removeShip', () => {
         const ship1 = new Ship(itinerary);
         const ship2 = new Ship(itinerary);
         const ship3 = new Ship(itinerary);
-
-        // port1.addShip(ship1);
-        // port1.addShip(ship2);
-        // port1.addShip(ship3);
+        
         port1.removeShip(ship2);
         expect(port1.ships).not.toContain(ship2);
     });
