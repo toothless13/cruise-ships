@@ -6,8 +6,13 @@ const Itinerary = require('../src/Itinerary');
 describe('Ship', () => {
 
     it('can be instantiated', () => {
-        const port = new Port('Dover');
-        const itinerary = new Itinerary([port]);
+        const port = {
+            name: 'Dover',
+            ships: [],
+            addShip: jest.fn(),
+            removeShip: jest.fn()
+        };
+        const itinerary = {ports: [port]};
         expect(new Ship(itinerary)).toBeInstanceOf(Object);
     });
 
