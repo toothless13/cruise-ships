@@ -43,12 +43,14 @@ describe('Ship', () => {
         });
 
         it('gets added to port on instantiation', () => {    
-            expect(dover.addShip).toHaveBeenCalled();
+            expect(dover.addShip).toHaveBeenCalledWith(ship);
         });
 
         it('can set sail', () => {
             ship.setSail();
-            expect(dover.removeShip).toHaveBeenCalled;
+
+            expect(ship.currentPort).toBeFalsy();
+            expect(dover.removeShip).toHaveBeenCalledWith(ship);
         });
     
         it('can\'t sail further than its itinerary', () => {  
