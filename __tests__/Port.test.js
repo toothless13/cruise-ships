@@ -11,8 +11,12 @@ describe('Port', () => {
         beforeEach(() => {
             port1 = new Port('Dover');
             port2 = new Port('Belfast');
-            itinerary = new Itinerary([port1, port2]);
-            ship1 = new Ship(itinerary);
+            itinerary = {ports: [port1, port2]};
+            ship1 = {
+                itinerary: itinerary,
+                currentPort: itinerary.ports[0],
+                previousPort: null,
+            }
         });
 
         it('has a name property', () => {

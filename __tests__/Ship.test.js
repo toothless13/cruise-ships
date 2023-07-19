@@ -33,7 +33,7 @@ describe('Ship', () => {
                 addShip: jest.fn(),
                 removeShip: jest.fn()
             };
-            itinerary = new Itinerary([dover, belfast]);
+            itinerary = {ports: [dover, belfast]};
             ship = new Ship(itinerary);
         });
         it('has a starting port', () => {
