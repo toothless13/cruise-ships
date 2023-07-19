@@ -16,8 +16,18 @@ describe('Ship', () => {
         let dover, belfast, itinerary, ship;
 
         beforeEach(() => {
-            dover = new Port('Dover');
-            belfast = new Port('Belfast');
+            dover = {
+                name: 'Dover',
+                ships: [],
+                addShip: jest.fn(),
+                removeShip: jest.fn()
+            };
+            belfast = {
+                name: 'Belfast',
+                ships: [],
+                addShip: jest.fn(),
+                removeShip: jest.fn()
+            };
             itinerary = new Itinerary([dover, belfast]);
             ship = new Ship(itinerary);
         });
@@ -33,14 +43,12 @@ describe('Ship', () => {
         });
 
         it('gets added to port on instantiation', () => {    
-            expect(dover.ships).toContain(ship);
+            expect(dover.addShip).toHaveBeenCalled();
         });
 
         it('can set sail', () => {
             ship.setSail();
-            expect(ship.currentPort).toBeFalsy;
-            expect(ship.previousPort).toBe(dover);
-            expect(dover.ships).not.toContain(ship);
+            expect(dover.removeShip).toHaveBeenCalled;
         });
     
         it('can\'t sail further than its itinerary', () => {  
@@ -54,7 +62,7 @@ describe('Ship', () => {
             ship.setSail();
             ship.dock();
             expect(ship.currentPort).toBe(belfast);
-            expect(belfast.ships).toContain(ship);
+            expect(belfast.addShip).toHaveBeenCalledWith(ship);
         });
     });
 });

@@ -23,20 +23,22 @@ describe('Port', () => {
     
         describe('addShip', () => {
             it('adds a ship to a docked ships array property', () => {
-                port1.addShip(ship1);
-                expect(port1.ships).toContain(ship1);
+                const ship = jest.fn();
+                port1.addShip(ship);
+                expect(port1.ships).toContain(ship);
             });
         });
         
         describe('removeShip', () => {
             it('removes a ship from the docked ships array', () => {
-                port1.removeShip(ship1);
-                expect(port1.ships).toEqual([]);
+                const ship = jest.fn();
+                port1.removeShip(ship);
+                expect(port1.ships).not.toContain(ship);
             });
         
             it('removes a ship from docked ships array when multiple ships are in array', () => {
-                const ship2 = new Ship(itinerary);
-                const ship3 = new Ship(itinerary);
+                const ship2 = jest.fn();
+                const ship3 = jest.fn();
         
                 port1.removeShip(ship2);
                 expect(port1.ships).not.toContain(ship2);
