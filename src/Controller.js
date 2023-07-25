@@ -18,17 +18,24 @@
 
         renderPorts(ports) {
             const portsElement = document.querySelector('#ports');
-            let portsElementWidth = 0;
-            portsElement.style.width = portsElementWidth + 'px';
-            ports.forEach((port) => {
-                console.log(port);
-                const div = document.createElement('div');
-                div.setAttribute('class', 'port');
-                div.setAttribute('data-portIndex', ports.indexOf(port));
-                portsElementWidth += 256;
-                portsElement.style.width = portsElementWidth + 'px';
-                portsElement.appendChild(div);
+            portsElement.style.width = '0px';
+            ports.forEach((port, index) => {
+                const newPortElement = document.createElement('div');
+                newPortElement.className = 'port';
+                newPortElement.dataset.portName = port.name;
+                newPortElement.dataset.portIndex = index;
+                portsElement.appendChild(newPortElement);
+                const portsElementWidth = parseInt(portsElement.style.width, 10);
+                portsElement.style.width = `${portsElementWidth + 256}px`;
             });
+        }
+
+        renderShip(ship) {
+            const currentPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
+            const port = document.querySelector(`[data-port-index="${currentPortIndex}"]`);
+            const shipElement = document.querySelector('#ship');
+            shipElement.style.top = `${port.offsetTop + 32}px`;
+            shipElement.style.left = `${port.offsetLeft - 32}px`;
         }
     }
 

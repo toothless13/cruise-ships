@@ -30,3 +30,25 @@ body {
     height: 32px;
     background-image: url('../images/port.png');
 }
+
+#ship {
+    background-image: url('../images/ship.png');
+    width: 128px;
+    height: 64px;
+    position: absolute;
+}
+
+#sailbutton {
+    width: 100%;
+    height: 32px;
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: 0;
+    background-color: red;
+    color: white;
+    font-weight: 700;
+}
+
+#sailbutton:hover {
+    cursor: pointer;
+}
