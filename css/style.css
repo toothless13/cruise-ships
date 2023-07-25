@@ -8,6 +8,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Press Start 2P', cursive;
 }
 
 #viewport {
@@ -39,16 +40,39 @@ body {
 }
 
 #sailbutton {
-    width: 100%;
+    width: 640px;
     height: 32px;
-    font-size: 1.5rem;
     position: absolute;
     bottom: 0;
     background-color: red;
     color: white;
     font-weight: 700;
+    border: 0;
+    border-bottom: 4px solid #d8040f;
+    padding: 10px 20px;
 }
 
 #sailbutton:hover {
     cursor: pointer;
+}
+
+#sailbutton:active {
+    cursor: pointer;
+    background-color: #d8040f;
+    border-bottom-width: 0;
+    padding-top: 14px;
+}
+
+#message {
+    background-color: white;
+    color: black;
+    width: 640px;
+    height: 32px;
+    position: absolute;
+    left: 10px;
+    bottom: 0;
+    font-weight: 700;
+    border: 0;
+    border-top: 4px solid black;
+    padding: 10px 20px;
 }
