@@ -6,6 +6,7 @@
             document.querySelector('#sailbutton').addEventListener('click', () => {
                 this.setSail();
             });
+            this.renderHud();
         }
 
         initialiseSea() {
@@ -61,11 +62,12 @@
                     ship.setSail();
                     ship.dock();
                     this.renderMessage(`You have arrived at ${ship.currentPort.name}`);
+                    this.renderHud();
                     clearInterval(sailInterval);
                 }
 
                 shipElement.style.left = `${shipLeft + 1}px`;
-            }, 10);
+            }, 20);
         }
 
         renderMessage(message) {
@@ -77,6 +79,23 @@
             setTimeout(() => {
                 document.querySelector('#viewport').removeChild(messageElement)
             }, 2000);
+        }
+
+        renderHud() {
+            const ship = this.ship;
+            const hud = document.querySelector('#hud');
+            const currentPortDisplay = document.querySelector('#currentPortDisplay')
+            currentPortDisplay.innerHTML = `Current Port: ${ship.currentPort.name}`;
+
+            const nextPortIndex = ship.itinerary.ports.indexOf(ship.currentPort) + 1;
+
+            const nextPort = ship.itinerary.ports[nextPortIndex];
+            
+            if(!nextPort) {
+                return nextPortDisplay.innerHTML = ""; 
+            } else {
+                nextPortDisplay.innerHTML = `Next Port: ${ship.itinerary.ports[nextPortIndex].name}`; 
+            }
         }
     }
 
