@@ -12,6 +12,21 @@ body {
     font-family: 'Press Start 2P', cursive;
 }
 
+#addPort {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 20px;
+    background-color: white;
+    color: black;
+}
+
+#addPort input[type="submit"] {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+}
+
 #hud {
     position: absolute;
     right:0;
