@@ -26,11 +26,10 @@
 
         addPort() {
             const ship = this.ship;
-            console.log("This is being invoked")
             const newPortName = document.querySelector('#portName').value;
             ship.itinerary.ports.push(new Port(newPortName));
             document.querySelector('#portName').value = "";
-            console.log(ship.itinerary.ports);
+            // console.log(ship.itinerary.ports);
             this.renderPorts(ship.itinerary.ports)
             this.renderHud();
         }
