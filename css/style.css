@@ -64,6 +64,7 @@ body {
     width: 128px;
     height: 64px;
     position: absolute;
+    display: none;
 }
 
 #sailbutton {

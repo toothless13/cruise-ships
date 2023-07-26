@@ -34,15 +34,23 @@
     <script src="/src/Itinerary.js"></script>
     <script src="/src/Ship.js"></script>
     <script>
-        const itinerary = new Itinerary([
-            new Port('Dover'),
-            new Port('Belfast'),
-            new Port('Calais')
-        ]);
-        const ship = new Ship(itinerary);
-        const controller = new Controller(ship);
-        controller.renderPorts(itinerary.ports);
-        controller.renderShip();
+        const itinerary = new Itinerary([]);
+
+        const addPortButton = document.querySelector('#addPort button');
+
+        function addFirstPort() {
+            const newPortName = document.querySelector('#portName').value;
+            itinerary.ports.push(new Port(newPortName));
+            document.querySelector('#portName').value = "";
+            console.log(itinerary.ports);
+            const ship = new Ship(itinerary);
+            const controller = new Controller(ship);
+            controller.renderPorts(itinerary.ports);
+            controller.renderShip();
+            addPortButton.removeEventListener('click', addFirstPort);
+        };
+
+        addPortButton.addEventListener('click', addFirstPort);
     </script>
 </body>
 </html>

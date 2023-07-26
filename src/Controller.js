@@ -7,6 +7,9 @@
                 this.setSail();
             });
             this.renderHud();
+            document.querySelector('#addPort button').addEventListener('click', () => {
+                this.addPort();
+            })
         }
 
         initialiseSea() {
@@ -21,7 +24,19 @@
             }, 1000);
         }
 
+        addPort() {
+            const ship = this.ship;
+            console.log("This is being invoked")
+            const newPortName = document.querySelector('#portName').value;
+            ship.itinerary.ports.push(new Port(newPortName));
+            document.querySelector('#portName').value = "";
+            console.log(ship.itinerary.ports);
+            this.renderPorts(ship.itinerary.ports)
+            this.renderHud();
+        }
+
         renderPorts(ports) {
+            document.querySelector('#ports').innerHTML = '';
             const portsElement = document.querySelector('#ports');
             portsElement.style.width = '0px';
             ports.forEach((port, index) => {
@@ -42,6 +57,7 @@
             const shipElement = document.querySelector('#ship');
             shipElement.style.top = `${port.offsetTop + 32}px`;
             shipElement.style.left = `${port.offsetLeft - 32}px`;
+            shipElement.style.display = 'block';
         }
 
         setSail() {
