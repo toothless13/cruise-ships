@@ -21,10 +21,14 @@ body {
     color: black;
 }
 
-#addPort input[type="submit"] {
+#addPort button {
     background-color: red;
     color: white;
     padding: 5px 10px;
+}
+
+#addPort button:hover {
+    cursor: pointer;
 }
 
 #hud {
